@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="jslib/services/|jslib/|jslib/webgl/" kind="src" path=""/>
+	<classpathentry excluding="services/|webgl/" kind="src" path="jslib"/>
+	<classpathentry kind="src" path="jslib/services"/>
+	<classpathentry kind="src" path="jslib/webgl"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

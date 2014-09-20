@@ -1,0 +1,20 @@
+aspect_ratio: '16:9'
+canvas_main: magtac.canvas.js
+cover_art: ''
+deploy_files:
+- magtac.tzjs
+- magtac.canvas.js
+- mapping_table.json
+deployed: Never
+engine_version: '0.28'
+flash_main: ''
+has_notifications: false
+is_multiplayer: false
+is_temp: false
+mapping_table: mapping_table.json
+modified: 11:31 | 20/09/2014
+path: /home/sho/workspace/magtac
+plugin_main: magtac.tzjs
+slug: magical-tactic
+title: Magical Tactic
+title_logo: ''
