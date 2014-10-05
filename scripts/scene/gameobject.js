@@ -10,6 +10,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 See the GNU General Public License for more details.
  */
+/*{{ javascript("scripts/scene/baseobject.js") }}*/
 
 var GameObject = (function() {
 
@@ -54,7 +55,7 @@ var GameObject = (function() {
             get : function() {
                 if (!(name in this.component)) { return null; }
                 return this.component[name];
-            },
+            }
         });
     };
     return GameObject;

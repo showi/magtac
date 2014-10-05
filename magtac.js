@@ -25,8 +25,8 @@
 /*{{ javascript("scripts/scene/gameobject.js") }}*/
 /*{{ javascript("scripts/scene/enum/type.js") }}*/
 /*{{ javascript("scripts/scene/dlist.js") }}*/
-
-
+/*{{ javascript("scripts/scene/character.js") }}*/
+/*{{ javascript("scripts/vb/cube.js") }}*/
 
 /*global TurbulenzEngine: true */
 /*global RequestHandler: false */
@@ -39,11 +39,12 @@
 /*global MouseForces: false */
 /*global TurbulenzServices: false */
 
-//console.log('eType', eType.reverse(eType.gameobject));
-
-var npc = new GameObject();
-
 TurbulenzEngine.onload = function onloadFn() {
+
+	var cube = new Cube();
+	console.log('Cube', cube.toString());
+	var c = new Character();
+	
     var errorCallback = function errorCallback(msg) {
         window.alert(msg);
     };
@@ -99,188 +100,13 @@ TurbulenzEngine.onload = function onloadFn() {
         diffuse: null
     });
 
-    /*jshint white: false*/
-    // Vertex buffer parameters for crate
-    var vertexbufferParameters = {
-        numVertices: 24,
-        attributes: ['FLOAT3', 'SHORT2'],
-        dynamic: false,
-        data: [
-            -0.5,
-            -0.5,
-            0.5,
-            0,
-            0,
-            0.5,
-            -0.5,
-            0.5,
-            1,
-            0,
-            0.5,
-            0.5,
-            0.5,
-            1,
-            1,
-            -0.5,
-            0.5,
-            0.5,
-            0,
-            1,
-            -0.5,
-            0.5,
-            0.5,
-            0,
-            0,
-            0.5,
-            0.5,
-            0.5,
-            1,
-            0,
-            0.5,
-            0.5,
-            -0.5,
-            1,
-            1,
-            -0.5,
-            0.5,
-            -0.5,
-            0,
-            1,
-            -0.5,
-            0.5,
-            -0.5,
-            1,
-            1,
-            0.5,
-            0.5,
-            -0.5,
-            0,
-            1,
-            0.5,
-            -0.5,
-            -0.5,
-            0,
-            0,
-            -0.5,
-            -0.5,
-            -0.5,
-            1,
-            0,
-            -0.5,
-            -0.5,
-            -0.5,
-            0,
-            0,
-            0.5,
-            -0.5,
-            -0.5,
-            1,
-            0,
-            0.5,
-            -0.5,
-            0.5,
-            1,
-            1,
-            -0.5,
-            -0.5,
-            0.5,
-            0,
-            1,
-            0.5,
-            -0.5,
-            0.5,
-            0,
-            0,
-            0.5,
-            -0.5,
-            -0.5,
-            1,
-            0,
-            0.5,
-            0.5,
-            -0.5,
-            1,
-            1,
-            0.5,
-            0.5,
-            0.5,
-            0,
-            1,
-            -0.5,
-            -0.5,
-            -0.5,
-            0,
-            0,
-            -0.5,
-            -0.5,
-            0.5,
-            1,
-            0,
-            -0.5,
-            0.5,
-            0.5,
-            1,
-            1,
-            -0.5,
-            0.5,
-            -0.5,
-            0,
-            1
-        ]
-    };
-
     /*jshint white: true*/
-    var vertexbuffer = graphicsDevice.createVertexBuffer(vertexbufferParameters);
+    var vertexbuffer = graphicsDevice.createVertexBuffer(cube.vertexBufferParameters);
 
     var semantics = graphicsDevice.createSemantics([graphicsDevice.SEMANTIC_POSITION, graphicsDevice.SEMANTIC_TEXCOORD]);
 
-    /*jshint white: false*/
-    var indexbufferParameters = {
-        numIndices: 36,
-        format: 'USHORT',
-        dynamic: false,
-        data: [
-            2,
-            0,
-            1,
-            3,
-            0,
-            2,
-            6,
-            4,
-            5,
-            7,
-            4,
-            6,
-            10,
-            8,
-            9,
-            11,
-            8,
-            10,
-            14,
-            12,
-            13,
-            15,
-            12,
-            14,
-            18,
-            16,
-            17,
-            19,
-            16,
-            18,
-            22,
-            20,
-            21,
-            23,
-            20,
-            22
-        ]
-    };
-
     /*jshint white: true*/
-    var indexbuffer = graphicsDevice.createIndexBuffer(indexbufferParameters);
+    var indexbuffer = graphicsDevice.createIndexBuffer(cube.indexBufferParameters);
 
     var primitive = graphicsDevice.PRIMITIVE_TRIANGLES;
     var numIndices = 36;
@@ -315,7 +141,7 @@ TurbulenzEngine.onload = function onloadFn() {
     var cursorSemantic = graphicsDevice.createSemantics([graphicsDevice.SEMANTIC_POSITION]);
 
     var clearColor = mathDevice.v4Build(0.95, 0.95, 1.0, 1.0);
-
+		
     //
     // Physics
     //
